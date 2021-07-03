@@ -41,7 +41,7 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    const port = PORT || 3000;
+    const port = PORT || 3001;
     app.listen(port);
     console.log('Server is running...');
   })
