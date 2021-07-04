@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const { users: usersRouters } = require('./routes/api');
+const {tests: testsRouters}=require('./routes/api')
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/users', usersRouters);
+app.use('/api/tests', testsRouters);
 
 app.use((_, res) => {
   res.status(404).json({
