@@ -1,21 +1,24 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const testsSchema=Schema({
-    question:{
-        type:String,
-        // required: [true, 'Question is required'],
-    },
-    options:{
-        type:Array,
-        // required: [true, 'Options is required'],
-    },
-    answer:{
-        type:Array,
-        // required: [true, 'Answer is required'],
-    }
+const testSchema = Schema({
+  question: {
+    type: String,
+    required: [true, "Question is required"],
+  },
+  answers: {
+    type: Array,
+    required: [true, "Options is required"],
+  },
+  rightAnswer: {
+    type: String,
+    required: [true, "Answer is required"],
+  },
 });
 
+const Theory = model("theory", testSchema);
+const Practice = model("practice", testSchema);
 
-const Test=model('test',testsSchema );
-
-module.exports= Test;
+module.exports ={
+  Theory,
+  Practice,
+} 

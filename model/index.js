@@ -1,7 +1,8 @@
 const User = require('./user');
-const Test = require('./test');
+const {Theory,Practice} = require('./test');
 
 module.exports = {
   User,
-  Test,
+  Theory,
+  Practice,
 };

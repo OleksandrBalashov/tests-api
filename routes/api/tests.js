@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { tests: testsCtrl } = require('../../controllers');
+const { tests: testsCtrl } = require("../../controllers");
 
-router.get('/qa', testsCtrl.qaTests.getQaTests);
+router.get("/qa", testsCtrl.practices.getPractice);
+router.get("/theories", testsCtrl.theories);
 
-
-module.exports=router;
+module.exports = router;

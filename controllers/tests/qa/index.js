@@ -1,6 +1,6 @@
-const getQaTests=require('./getQa');
+const getPractice=require('./getPractice');
 
 
 module.exports={
-    getQaTests,
+    getPractice,
 }

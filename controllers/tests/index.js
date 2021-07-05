@@ -1,6 +1,8 @@
-const qaTests=require('./qa');
+const practices=require('./qa');
+const theories=require('./theory');
 
 
 module.exports={
-    qaTests,
+    practices,
+    theories,
 }
