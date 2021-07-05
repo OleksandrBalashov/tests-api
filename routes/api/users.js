@@ -16,4 +16,8 @@ router.get('/verify/:verificationToken', usersCtrl.verificationToken);
 
 router.post('/verify', validateUsers.validVerifyEmail, usersCtrl.verify);
 
+router.get('/google', usersCtrl.googleAuth);
+
+router.get('/google-redirect', usersCtrl.googleRedirect);
+
 module.exports = router;
