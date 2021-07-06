@@ -1,5 +1,5 @@
 const { Practice } = require("../../../model");
-const {getTests}=require('../../../utils')
+const { getTests } = require("../../../utils");
 
 const getPractice = (req, res, next) => {
   try {

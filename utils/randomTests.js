@@ -11,5 +11,4 @@ const randomTests = (arr) => {
   return randomTests;
 };
 
-
-module.exports=randomTests;
+module.exports = randomTests;

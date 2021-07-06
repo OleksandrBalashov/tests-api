@@ -1,4 +1,4 @@
-const randomTests  = require("./randomTests");
+const randomTests = require("./randomTests");
 
 const getTests = async (model, res) => {
   const allTests = await model.find({});
@@ -12,5 +12,4 @@ const getTests = async (model, res) => {
   });
 };
 
-
-module.exports=getTests;
+module.exports = getTests;
