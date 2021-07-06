@@ -1,4 +1,6 @@
 const getTheories=require('./getTheory');
 
 
-module.exports=getTheories;
+module.exports={
+    getTheories
+};
