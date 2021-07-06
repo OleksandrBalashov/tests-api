@@ -1,15 +1,9 @@
 const { Practice } = require("../../../model");
+const {getTests}=require('../../../utils')
 
-const getPractice = async (req, res, next) => {
+const getPractice = (req, res, next) => {
   try {
-    const result = await Practice.find({});
-    return res.json({
-      status: "success",
-      code: 200,
-      data: {
-        result,
-      },
-    });
+    getTests(Practice, res);
   } catch (error) {
     next(error);
   }
