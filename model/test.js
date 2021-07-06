@@ -15,10 +15,10 @@ const testSchema = Schema({
   },
 });
 
-const Theory = model("theory", testSchema);
-const Practice = model("practice", testSchema);
+const Theory = model("qa-theory", testSchema);
+const Practice = model("qa-practice", testSchema);
 
-module.exports ={
+module.exports = {
   Theory,
   Practice,
-} 
+};
