@@ -16,9 +16,9 @@ const signUp = async (req, res, next) => {
       });
     }
 
-    const { email, verify, verifyToken } = await services.addUser(body);
-
-    const { googleAuth } = body;
+    const { email, verify, verifyToken, googleAuth } = await services.addUser(
+      body
+    );
 
     const mail = createMail(email, verifyToken);
 

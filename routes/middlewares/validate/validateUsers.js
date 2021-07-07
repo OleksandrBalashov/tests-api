@@ -6,9 +6,9 @@ const validateForm = (req, _, next) => {
   const isValidUser = Joi.object({
     email: Joi.string().required(),
     password: Joi.string().required(),
-    token: Joi.string(),
     verify: Joi.boolean(),
     verifyToken: Joi.string(),
+    googleAuth: Joi.boolean(),
   });
 
   const validUser = isValidUser.validate(body);
