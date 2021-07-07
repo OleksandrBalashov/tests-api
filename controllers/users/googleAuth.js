@@ -1,8 +1,7 @@
 const queryString = require('query-string');
-const axios = require('axios');
 require('dotenv').config();
 
-const googleAuth = async (req, res) => {
+const googleAuth = (_, res) => {
   const { GOOGLE_CLIENT_ID, BASE_URL } = process.env;
 
   const stringifiedParams = queryString.stringify({

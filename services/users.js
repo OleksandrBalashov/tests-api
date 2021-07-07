@@ -6,7 +6,7 @@ const findUser = filter => {
 
 const addUser = ({ email, password }) => {
   const newUser = new User({ email });
-  newUser.setPassword(password);
+  password ? newUser.setPassword(password) : null;
 
   return newUser.save();
 };
