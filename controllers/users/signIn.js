@@ -8,7 +8,7 @@ const signIn = async (req, res, next) => {
   try {
     const user = await services.findUser({ email });
 
-    if (!user || !user.validPassword(password)) {
+    if (!user || (!user.googleAuth && !user.validPassword(password))) {
       return res.status(401).json({
         status: 'error',
         code: 401,
