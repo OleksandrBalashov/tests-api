@@ -14,7 +14,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/users', usersRouters);
-// app.use('/auth/google');
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((_, res) => {
