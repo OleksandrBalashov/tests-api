@@ -6,7 +6,7 @@ const { validateUsers } = require('../middlewares/validate');
 
 router.post('/signup', validateUsers.validateForm, usersCtrl.signUp);
 
-router.post('/signin', validateUsers.validateForm, usersCtrl.signIn);
+router.post('/signin', validateUsers.validateForm, usersCtrl.signIn); //обязательное подтверждение имйэла перед аутентификацией
 
 router.post('/logout', auth, usersCtrl.signOut);
 
