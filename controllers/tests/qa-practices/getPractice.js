@@ -1,9 +1,9 @@
-const { Theory } = require("../../../model");
+const { Practice } = require("../../../model");
 const { getTests, randomTests } = require("../../../utils");
 
-const getTheory = async (req, res, next) => {
+const getPractice = (req, res, next) => {
   try {
-    const allTests = await getTests(Theory);
+    const allTests = getTests(Practice);
     const tests = randomTests(allTests);
 
     return res.json({
@@ -18,4 +18,4 @@ const getTheory = async (req, res, next) => {
   }
 };
 
-module.exports = getTheory;
+module.exports = getPractice;

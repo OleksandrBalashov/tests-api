@@ -12,7 +12,6 @@ const userSchema = Schema({
   },
   password: {
     type: String,
-    required: [true, 'Password is required'],
     minlength: 6,
   },
   verify: {
@@ -23,6 +22,10 @@ const userSchema = Schema({
     type: String,
     required: [true, 'Verify token is required'],
     default: () => nanoid(),
+  },
+  googleAuth: {
+    type: Boolean,
+    default: false,
   },
 });
 

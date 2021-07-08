@@ -1,15 +1,6 @@
-const randomTests = require("./randomTests");
-
-const getTests = async (model, res) => {
+const getTests = async (model) => {
   const allTests = await model.find({});
-  const tests = randomTests(allTests);
-  return res.json({
-    status: "success",
-    code: 200,
-    data: {
-      result: tests,
-    },
-  });
+  return allTests;
 };
 
 module.exports = getTests;

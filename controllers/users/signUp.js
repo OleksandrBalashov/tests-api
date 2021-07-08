@@ -16,7 +16,9 @@ const signUp = async (req, res, next) => {
       });
     }
 
-    const { email, verify, verifyToken } = await services.addUser(body);
+    const { email, verify, verifyToken, googleAuth } = await services.addUser(
+      body
+    );
 
     const mail = createMail(email, verifyToken);
 
@@ -33,6 +35,7 @@ const signUp = async (req, res, next) => {
           email,
           verify,
           verifyToken,
+          googleAuth,
         },
       },
       message: 'User create',

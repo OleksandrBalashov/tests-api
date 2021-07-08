@@ -1,4 +1,4 @@
-const getPractices=require('./getPractices');
+const getPractices=require('./getPractice');
 const resultPractices=require('./resultPractices');
 
 
