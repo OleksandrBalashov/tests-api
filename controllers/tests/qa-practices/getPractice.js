@@ -1,5 +1,5 @@
-const { Practice } = require("../../../model");
-const { getTests, randomTests } = require("../../../utils");
+const { Practice } = require('../../../model');
+const { getTests, randomTests } = require('../../../utils');
 
 const getPractice = (req, res, next) => {
   try {
@@ -7,7 +7,7 @@ const getPractice = (req, res, next) => {
     const tests = randomTests(allTests);
 
     return res.json({
-      status: "success",
+      status: 'success',
       code: 200,
       data: {
         result: tests,
