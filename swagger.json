@@ -11,7 +11,7 @@
   },
   "consumes": ["application/json"],
   "produces": ["application/json"],
-  "servers": [{ "url": "http://localhost:3000" }],
+  "servers": [{ "url": "http://localhost:3001" }],
   "tags": [
     {
       "name": "Auth",
@@ -187,7 +187,7 @@
         "summary": "User logout",
         "parameters": [
           {
-            "in": "path",
+            "in": "headers",
             "name": "Authorization",
             "required": true,
             "type": "string",
@@ -223,7 +223,7 @@
         "summary": "Get current user",
         "parameters": [
           {
-            "in": "path",
+            "in": "headers",
             "name": "Authorization",
             "required": true,
             "type": "string",
@@ -241,6 +241,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
           }
         }
       }
@@ -272,8 +280,136 @@
       "get": {
         "tags": ["Tests"],
         "summary": "QA practices tests",
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "in": "headers",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Token of current user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "descriotion": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestsResponce"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": ["Tests"],
+        "summary": "QA practice tests result",
+        "parameters": [
+          {
+            "in": "headers",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Token of current user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "descriotion": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestsResultResponce"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/tests/qa-theories": {
+      "get": {
+        "tags": ["Tests"],
+        "summary": "QA theory tests",
+        "parameters": [
+          {
+            "in": "headers",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Token of current user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "descriotion": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestsResponce"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": ["Tests"],
+        "summary": "QA theories tests result",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Token of current user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "descriotion": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestsResultResponce"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
       }
     }
   },
@@ -528,14 +664,89 @@
             }
           }
         }
+      },
+      "TestsResponce": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "number"
+          },
+          "data": {
+            "type": "object",
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_id": {
+                    "type": "string"
+                  },
+                  "question": {
+                    "type": "string"
+                  },
+                  "answers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "rightAnswer": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "data": {
+            "result": [
+              {
+                "_id": "123465768706",
+                "question": "Example",
+                "answers": ["a", "b", "c", "d"],
+                "rightAnswer": "a"
+              }
+            ]
+          }
+        }
+      },
+      "TestsResultResponce": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "number"
+          },
+          "data": {
+            "type": "object",
+            "feedback": {
+              "type": "string"
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "data": {
+            "feedback": "75%"
+          }
+        }
       }
-    }
-  },
-  "securitySchemes": {
-    "Bearer": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT"
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   }
 }
