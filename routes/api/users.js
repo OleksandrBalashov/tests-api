@@ -8,7 +8,7 @@ router.post('/signup', validateUsers.validateForm, usersCtrl.signUp);
 
 router.post('/signin', validateUsers.validateForm, usersCtrl.signIn); //обязательное подтверждение имйэла перед аутентификацией
 
-router.post('/logout', auth, usersCtrl.signOut);
+router.post('/signout', auth, usersCtrl.signOut);
 
 router.post('/current', auth, usersCtrl.getCurrent);
 

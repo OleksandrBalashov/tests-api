@@ -12,13 +12,12 @@ const signUp = async (req, res, next) => {
       return res.status(409).json({
         status: 'error',
         code: 409,
-        message: 'Email already registed',
+        message: 'Email already exist',
       });
     }
 
-    const { email, verify, verifyToken, googleAuth } = await services.addUser(
-      body
-    );
+    const { email, verify, verifyToken, googleAuth, password } =
+      await services.addUser(body);
 
     const mail = createMail(email, verifyToken);
 
@@ -36,6 +35,7 @@ const signUp = async (req, res, next) => {
           verify,
           verifyToken,
           googleAuth,
+          password,
         },
       },
       message: 'User create',
