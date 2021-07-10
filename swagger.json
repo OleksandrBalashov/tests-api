@@ -18,6 +18,15 @@
       "description": "Authorization endpoints"
     },
     {
+      "name": "Google Auth",
+      "description": "GoogleAuth endpoints"
+    },
+    {
+      "name": "User",
+      "description": "User endpoints"
+    },
+
+    {
       "name": "Tests",
       "description": "Tests endpoints"
     }
@@ -28,7 +37,6 @@
         "tags": ["Auth"],
         "summary": "User registration",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Registration's object",
           "required": true,
@@ -75,7 +83,6 @@
             "description": "User's verify email with his verifyToken"
           }
         ],
-        "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
             "description": "Verification successful",
@@ -101,9 +108,8 @@
     "/api/users/verify": {
       "post": {
         "tags": ["Auth"],
-        "summary": "User verification",
+        "summary": "Send again user verification",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "User email",
           "required": true,
@@ -142,7 +148,6 @@
         "tags": ["Auth"],
         "summary": "User authontication",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Authorisation's object",
           "required": true,
@@ -180,7 +185,95 @@
       "post": {
         "tags": ["Auth"],
         "summary": "User logout",
-        "parameters": []
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Token of current user"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignOutResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/users/current": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Get current user",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Token of current user"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/google": {
+      "get": {
+        "tags": ["Google Auth"],
+        "summary": "Google user registration",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleAuthResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/tests/qa-practices": {
+      "get": {
+        "tags": ["Tests"],
+        "summary": "QA practices tests",
+        "parameters": [],
+        "responses": {}
       }
     }
   },
@@ -247,7 +340,7 @@
               "verify": false,
               "verifyToken": "qwer_qwee_aaaa",
               "googleAuth": false,
-              "password": "$2a$06$ecoVYU6VRflaasdalhKQL3"
+              "password": "$2a$06$ecoVYU6VRflaasdalhKQL3.bqd9dzaO7fkyqqN0PBwq4Yc1j8LC9MO"
             }
           }
         }
@@ -293,7 +386,7 @@
               "verify": true,
               "verifyToken": null,
               "googleAuth": false,
-              "password": "$2a$06$ecoVYU6VRflaasdalhKQL3"
+              "password": "$2a$06$ecoVYU6VRflaasdalhKQL3.bqd9dzaO7fkyqqN0PBwq4Yc1j8LC9MO"
             }
           }
         }
@@ -348,6 +441,92 @@
           "status": "success",
           "code": 200,
           "message": "Verification email sent"
+        }
+      },
+      "SignOutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "number"
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 204
+        }
+      },
+      "CurrentUserResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "number"
+          },
+          "data": {
+            "type": "object",
+            "user": {
+              "type": "object",
+              "email": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "data": {
+            "user": {
+              " email": "example@gmail.com"
+            }
+          }
+        }
+      },
+      "GoogleAuthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "number"
+          },
+          "data": {
+            "type": "object",
+            "user": {
+              "type": "object",
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "verify": {
+                "type": "boolean"
+              },
+              "verifyToken": {
+                "type": "string"
+              },
+              "googleAuth": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 201,
+          "data": {
+            "user": {
+              "email": "example@gmail.com",
+              "verify": false,
+              "verifyToken": "qwer_qwee_aaaa",
+              "googleAuth": true
+            }
+          }
         }
       }
     }
