@@ -16,6 +16,14 @@ const verificationToken = async (req, res, next) => {
       });
     }
 
+    if (user.verify) {
+      return res.status(400).json({
+        status: 'error',
+        code: 400,
+        message: 'Verification has already been passed',
+      });
+    }
+
     await services.findByIdAndUpdate(user._id, {
       verify: true,
       verifyToken: null,
