@@ -1,5 +1,5 @@
 const getCurrent = (req, res, next) => {
-  const { email, subscription } = req.user;
+  const { email } = req.user;
 
   res.json({
     status: 'success',

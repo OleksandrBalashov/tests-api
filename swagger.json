@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "version": "1.0.0",
-    "title": "tests-app/api-docs",
+    "title": "tests-app-api/api-docs",
     "description": "Showing api-docs",
     "license": {
       "name": "MIT",
@@ -464,6 +464,9 @@
               "password": {
                 "type": "string"
               }
+            },
+            "message": {
+              "type": "string"
             }
           }
         },
@@ -478,7 +481,8 @@
               "googleAuth": false,
               "password": "$2a$06$ecoVYU6VRflaasdalhKQL3.bqd9dzaO7fkyqqN0PBwq4Yc1j8LC9MO"
             }
-          }
+          },
+          "message": "User created"
         }
       },
       "AuthonticationResponse": {
