@@ -1,4 +1,4 @@
-const randomTests = (arr) => {
+const randomTests = arr => {
   let arrRandomIdx = [];
 
   while (arrRandomIdx.length < 12) {
@@ -7,8 +7,8 @@ const randomTests = (arr) => {
       arrRandomIdx.push(randomIdx);
     }
   }
-  const randomTests = arrRandomIdx.map((idx) => arr[idx]);
-  return randomTests;
+  const randomTest = arrRandomIdx.map(idx => arr[idx]);
+  return randomTest;
 };
 
 module.exports = randomTests;

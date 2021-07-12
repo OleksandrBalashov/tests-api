@@ -7,7 +7,7 @@ const auth = async (req, res, next) => {
   const { SECRET_KEY } = process.env;
 
   if (!authorization) {
-    res.status(401).json({
+    return res.status(401).json({
       status: 'error',
       code: 401,
       message: 'Not authorized',

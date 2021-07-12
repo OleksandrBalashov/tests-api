@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { tests: testsCtrl } = require("../../controllers");
-const { auth } = require("../middlewares/auth");
-const { validateAnswers } = require("../middlewares/validate");
+const { tests: testsCtrl } = require('../../controllers');
+const { auth } = require('../middlewares/auth');
+const { validateAnswers } = require('../middlewares/validate');
 
-router.get("/qa-practices", testsCtrl.practices.getPractices);
-router.get("/qa-theories", testsCtrl.theories.getTheories);
+router.get('/qa-practices', auth, testsCtrl.practices.getPractices);
+router.get('/qa-theories', auth, testsCtrl.theories.getTheories);
 
 router.post(
-  "/qa-practices",
+  '/qa-practices',
   auth,
   validateAnswers,
   testsCtrl.practices.resultPractices
 );
 router.post(
-  "/qa-theories",
+  '/qa-theories',
   auth,
   validateAnswers,
   testsCtrl.theories.resultTheories

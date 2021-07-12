@@ -1,9 +1,9 @@
 const { Practice } = require('../../../model');
 const { getTests, randomTests } = require('../../../utils');
 
-const getPractice = (req, res, next) => {
+const getPractice = async (req, res, next) => {
   try {
-    const allTests = getTests(Practice);
+    const allTests = await getTests(Practice);
     const tests = randomTests(allTests);
 
     return res.json({
