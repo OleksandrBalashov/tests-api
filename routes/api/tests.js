@@ -4,8 +4,8 @@ const { tests: testsCtrl } = require('../../controllers');
 const { auth } = require('../middlewares/auth');
 const { validateAnswers } = require('../middlewares/validate');
 
-router.get('/qa-practices', auth, testsCtrl.practices.getPractices);
-router.get('/qa-theories', auth, testsCtrl.theories.getTheories);
+router.get('/qa-practices', testsCtrl.practices.getPractices);
+router.get('/qa-theories', testsCtrl.theories.getTheories);
 
 router.post(
   '/qa-practices',
