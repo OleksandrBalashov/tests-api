@@ -9,13 +9,13 @@ router.get('/qa-theories', testsCtrl.theories.getTheories);
 
 router.post(
   '/qa-practices',
-  auth,
+  // auth,
   validateAnswers,
   testsCtrl.practices.resultPractices
 );
 router.post(
   '/qa-theories',
-  auth,
+  // auth,
   validateAnswers,
   testsCtrl.theories.resultTheories
 );
