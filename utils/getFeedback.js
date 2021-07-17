@@ -8,8 +8,9 @@ const feedback = (allTests, userTests) => {
       }
     }
   });
-  const feedback = `${Math.floor((result.length / 12) * 100)}%`;
-  return feedback;
+  // const feedback = `${Math.floor((result.length / 12) * 100)}%`;
+  // return feedback;
+  return result.length;
 };
 
 module.exports = feedback;
