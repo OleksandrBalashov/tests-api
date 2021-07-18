@@ -35,7 +35,9 @@ const verificationToken = async (req, res, next) => {
       message: 'Verification successful',
     });
 
-    return res.redirect(`${FRONTEND_URL}/login?email=${user.email}`); //редиректим на фронтенд и вставляем имэйл
+    next();
+
+    //return res.redirect(`${FRONTEND_URL}/login?email=${user.email}`); //редиректим на фронтенд и вставляем имэйл
   } catch (error) {
     next(error);
   }
