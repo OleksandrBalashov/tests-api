@@ -12,7 +12,7 @@ const createMail = (address, verifyToken) => {
       <h1>Вы зарегистрировались!</h1>
       <p>Чтобы подтвердить, перейдите по ссылке &#9759;</p>
       <br/>
-      <a href='http://localhost:3000/api/users/verify/${verifyToken}' alt="tests-api">http://tests-app.netlify.app/api/users/verify/${verifyToken}</a>
+      <a href='https://tests-app-api.herokuapp.com/api/users/verify/${verifyToken}' alt="tests-api">http://tests-app.netlify.app/api/users/verify/${verifyToken}</a>
     `,
   };
 
