@@ -12,11 +12,7 @@ router.post('/signout', auth, usersCtrl.signOut);
 
 router.post('/current', auth, usersCtrl.getCurrent);
 
-router.get(
-  '/verify/:verificationToken',
-  usersCtrl.verificationToken,
-  usersCtrl.redirect
-); //подтверждение имэйла
+router.get('/verify/:verificationToken', usersCtrl.verificationToken); //подтверждение имэйла
 
 router.post('/verify', validateUsers.validVerifyEmail, usersCtrl.verify); //повторная отправка подтверждения имэйла
 

@@ -29,15 +29,13 @@ const verificationToken = async (req, res, next) => {
       verifyToken: null,
     });
 
-    res.json({
-      status: 'success',
-      code: 200,
-      message: 'Verification successful',
-    });
+    // res.json({
+    //   status: 'success',
+    //   code: 200,
+    //   message: 'Verification successful',
+    // });
 
-    next();
-
-    //return res.redirect(`${FRONTEND_URL}/login?email=${user.email}`); //редиректим на фронтенд и вставляем имэйл
+    return res.redirect(`${FRONTEND_URL}/login?email=${user.email}`); //редиректим на фронтенд и вставляем имэйл
   } catch (error) {
     next(error);
   }
