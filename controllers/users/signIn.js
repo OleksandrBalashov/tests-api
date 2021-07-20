@@ -24,6 +24,8 @@ const signIn = async (req, res, next) => {
       });
     }
 
+    const { verify, verifyToken, googleAuth } = user;
+
     const { SECRET_KEY } = process.env;
 
     const payload = {
@@ -41,6 +43,10 @@ const signIn = async (req, res, next) => {
         token,
         user: {
           email,
+          verify,
+          verifyToken,
+          googleAuth,
+          password,
         },
       },
     });

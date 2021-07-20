@@ -496,6 +496,9 @@
           },
           "data": {
             "type": "object",
+            "token": {
+              "type": "string"
+            },
             "user": {
               "type": "object",
               "email": {
@@ -521,6 +524,7 @@
           "status": "success",
           "code": 200,
           "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6Ik.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0Ij.SflKxwRJSMeKKF2QT4fwpMeJV_adQssw5c",
             "user": {
               "email": "example@gmail.com",
               "verify": true,

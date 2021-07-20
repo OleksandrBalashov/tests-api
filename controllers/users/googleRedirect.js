@@ -39,17 +39,11 @@ const googleRedirect = async (req, res, next) => {
       req.body = { ...userData.data, googleAuth: true };
       next();
     }
+
+    return res.redirect(`${FRONTEND_URL}/login?email=${user.email}`); //редиректим на фронтенд и вставляем имэйл
   } catch (error) {
     next(error);
   }
-
-  //userData.data.email
-
-  //проверяем пользователя в базу
-  //даем токен, если пользователя нет
-
-  //   return res.redirect(`${FRONTEND_URL}?email=${userData.data.email}`);
-  // return res.redirect(`${FRONTEND_URL}?accessToken=${userData.data.accessToken}`); редиректим на фронт и указываем токен вместо мыла
 };
 
 module.exports = googleRedirect;
