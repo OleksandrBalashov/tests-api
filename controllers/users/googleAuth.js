@@ -15,8 +15,8 @@ const googleAuth = (_, res) => {
     access_type: 'offline',
     prompt: 'consent',
   });
-  return res.headers
-    .add('Access-Control-Allow-Origin', '*')
+  return res
+    .setHeader('Access-Control-Allow-Origin', '*')
     .redirect(
       `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`
     );
