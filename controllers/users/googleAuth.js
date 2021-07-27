@@ -2,6 +2,7 @@ const queryString = require('query-string');
 require('dotenv').config();
 
 const googleAuth = (_, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   const { GOOGLE_CLIENT_ID, BASE_URL } = process.env;
 
   const stringifiedParams = queryString.stringify({
@@ -15,11 +16,9 @@ const googleAuth = (_, res) => {
     access_type: 'offline',
     prompt: 'consent',
   });
-  return res
-    .setHeader('Access-Control-Allow-Origin', '*')
-    .redirect(
-      `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`
-    );
+  return res.redirect(
+    `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`
+  );
 };
 
 module.exports = googleAuth;
